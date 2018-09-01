@@ -7,7 +7,7 @@
 
 include ../../Makefile.defs
 auto_gen=
-NAME=auth_external.so
+NAME=auth_jwt.so
 LIBS=
 
 DEFS+=-DKAMAILIO_MOD_INTERFACE
