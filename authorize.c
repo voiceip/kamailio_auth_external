@@ -387,28 +387,28 @@ int ki_authjwt_authenticate(sip_msg_t *_m, str *susername, str *spassword)
 	LM_DBG("password: %.*s\n", spassword->len, spassword->s);
 
 	sgenerated_password.s = generated_password;
-	SECRET_LOCK;
-	secret_struct = secret_list;
-	while (secret_struct != NULL)
-	{
-		LM_DBG("trying secret: %.*s\n",
-			secret_struct->secret_key.len,
-			secret_struct->secret_key.s);
-		if (get_pass(susername, &secret_struct->secret_key,
-				&sgenerated_password) == 0)
-		{
-			LM_DBG("generated password: %.*s\n",
-				sgenerated_password.len, sgenerated_password.s);
-			if (strncmp(spassword->s, sgenerated_password.s,
-					spassword->len) == 0)
-			{
-				SECRET_UNLOCK;
-				return AUTH_OK;
-			}
-		}
-		secret_struct = secret_struct->next;
-	}
-	SECRET_UNLOCK;
+	// SECRET_LOCK;
+	// secret_struct = secret_list;
+	// while (secret_struct != NULL)
+	// {
+	// 	LM_DBG("trying secret: %.*s\n",
+	// 		secret_struct->secret_key.len,
+	// 		secret_struct->secret_key.s);
+	// 	if (get_pass(susername, &secret_struct->secret_key,
+	// 			&sgenerated_password) == 0)
+	// 	{
+	// 		LM_DBG("generated password: %.*s\n",
+	// 			sgenerated_password.len, sgenerated_password.s);
+	// 		if (strncmp(spassword->s, sgenerated_password.s,
+	// 				spassword->len) == 0)
+	// 		{
+	// 			SECRET_UNLOCK;
+	// 			return AUTH_OK;
+	// 		}
+	// 	}
+	// 	secret_struct = secret_struct->next;
+	// }
+	// SECRET_UNLOCK;
 
 	return AUTH_ERROR;
 }

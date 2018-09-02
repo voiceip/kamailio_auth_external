@@ -27,10 +27,15 @@
 #include <sys/time.h>
 #include <stdlib.h>
 
+#include "../../core/dprint.h"
+#include "../../core/locking.h"
+#include "../../core/mod_fix.h"
 #include "../../core/sr_module.h"
-#include "../../core/usr_avp.c"
-#include "../../core/pvar.h"
-#include "../../core/lvalue.h"
+#include "../../core/str.h"
+#include "../../core/kemi.h"
+#include "../../modules/auth/api.h"
+
+#include "auth_jwt.h"
 #include "authorize.h"
 #include "checks.h"
 
